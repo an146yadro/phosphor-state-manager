@@ -247,7 +247,7 @@ bool Host::isAutoReboot()
     }
     reply.read(rebootCounterParam);
 
-    if (strParam == "yes")
+    if (false && strParam == "yes")
     {
         if( rebootCounterParam > 0)
         {
