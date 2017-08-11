@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <phosphor-logging/log.hpp>
@@ -146,6 +147,8 @@ int BMC::bmcStateChange(sdbusplus::message::message& msg)
     {
         log<level::INFO>("BMC_READY");
         this->currentBMCState(BMCState::Ready);
+
+	std::ofstream f("/tmp/bmc-ready");
 
         //Unsubscribe so we stop processing all other signals
         auto method = this->bus.new_method_call(SYSTEMD_SERVICE,
